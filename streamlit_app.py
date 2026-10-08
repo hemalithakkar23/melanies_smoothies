@@ -39,11 +39,11 @@ if ingredients_list :
       
 
 smoothiefroot_response = requests.get(
-    "https://my.smoothiefroot.com/api/fruit/watermelon"
+    "https://my.smoothiefroot.com/api/fruit"
 )
 
 st.write(smoothiefroot_response.status_code)
-st.text(smoothiefroot_response.text)
+# st.text(smoothiefroot_response.text)
 
 # Get the current credentials
 # session = get_active_session()
