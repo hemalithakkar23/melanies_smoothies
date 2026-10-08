@@ -41,10 +41,25 @@ if ingredients_list :
 smoothiefroot_response = requests.get(
     "https://my.smoothiefroot.com/api/fruit"
 )
+sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+
+if ingredients_list:
+    INGREDIENTS_STRING = ''
+
+    for fruit_chosen in ingredients_list:
+        INGREDIENTS_STRING += fruit_chosen + ' '
+
+        smoothiefroot_response = requests.get(
+            "https://my.smoothiefroot.com/api/fruit/watermelon"
+        )
+
+        sf_df = st.dataframe(
+            data=smoothiefroot_response.json(),
+            use_container_width=True
+        )
 
 # st.write(smoothiefroot_response.status_code)
 # st.text(smoothiefroot_response.json())
-sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
 
 # Get the current credentials
 # session = get_active_session()
