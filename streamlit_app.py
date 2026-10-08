@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title("My Parents New Healthy Diner")
@@ -30,26 +31,18 @@ if ingredients_list :
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,NAME_ON_ORDER)
          values ('""" + INGREDIENTS_STRING + """' , '"""+name_on_order+ """' )"""
-
-#     my_dataframe = session.table("smoothies.public.orders") \
-#     .filter(col("ORDER_FILLED") == 0) \
-#     .collect()
-#     # st.write(my_insert_stmt)
-    # time_to_inset = st.button('Submit Order')
-
-    # st.write(my_insert_stmt)
     time_to_inset = st.button('Submit Order')
-    # st.stop() 
-    # 
     
     if time_to_inset:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
       
-import requests
+
 smoothiefroot_response = requests.get(
     "https://my.smoothiefroot.com/api/fruit/watermelon"
 )
+
+st.write(smoothiefroot_response.status_code)
 st.text(smoothiefroot_response.text)
 
 # Get the current credentials
