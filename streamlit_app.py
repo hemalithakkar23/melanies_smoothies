@@ -50,8 +50,7 @@ import requests
 smoothiefroot_response = requests.get(
     "https://my.smoothiefroot.com/api/fruit/watermelon"
 )
-st.write(smoothiefroot_response.json())   
-
+st.text(smoothiefroot_response.text)
 
 # Get the current credentials
 # session = get_active_session()
